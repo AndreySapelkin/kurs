@@ -153,3 +153,48 @@ class Maze(object):
         for i in range(self.Height+1):
             print(s[2*i])
             print(s[2*i+1])
+
+    def GetLoc(self, i, j):
+        return self.Locs[i][j];
+
+    def SetLoc(self, i, j, lw, uw):
+        self.Locs[i][j].left_wall = lw
+        self.Locs[i][j].up_wall = uw
+
+    def SetLocLeftWall(self, i, j, lw):
+        self.Locs[i][j].left_wall = lw
+
+    def SetLocUpWall(self, i, j, uw):
+        self.Locs[i][j].up_wall = uw
+
+    def GetWidth(self):
+        return self.Width
+
+    def GetHeight(self):
+        return self.Height
+
+    def SetSizes(self, w, h):
+        self.Width = w
+        self.Height = h
+
+        self.Locs = [[Location(False, False) for x in range(self.Height+1)]
+                     for y in range(self.Width+1)]
+
+        for i in range(self.Width + 1):
+            self.Locs[i][self.Height] = Location(False, True);
+
+        for j in range(self.Height + 1):
+            self.Locs[self.Width][j] = Location(True, False);
+
+        self.Locs[self.Width][self.Height] = Location(False, False);
+
+
+
+
+
+
+
+
+
+
+
